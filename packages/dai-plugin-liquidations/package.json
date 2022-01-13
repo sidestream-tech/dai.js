@@ -1,5 +1,5 @@
 {
-  "name": "@makerdao/dai-plugin-liquidations",
+  "name": "@sidestream/dai-plugin-liquidations",
   "description": "Plugin to add liquidations to dai.js",
   "version": "0.1.1",
   "license": "MIT",
