@@ -6,6 +6,7 @@ import {
   POLLING,
   BATCH_POLLING,
   ESM,
+  ESM_OLD,
   END,
   PAUSE,
   MKR,
@@ -26,6 +27,7 @@ type ContractAddresses = {
   kovan: { [key: string]: string };
   mainnet: { [key: string]: string };
   testnet?: { [key: string]: string };
+  goerlifork?: { [key: string]: string };
   goerli?: { [key: string]: string };
 };
 
@@ -36,6 +38,7 @@ export default {
     const contractAddresses: ContractAddresses = {
       kovan: require('../contracts/addresses/kovan.json'),
       goerli: require('../contracts/addresses/goerli.json'),
+      goerlifork: require('../contracts/addresses/goerli.json'),
       mainnet: require('../contracts/addresses/mainnet.json')
     };
 
@@ -48,6 +51,10 @@ export default {
     const addressKey = network == 'ganache' ? 'testnet' : network;
 
     const esmContracts = {
+      [ESM_OLD]: {
+        address: map(prop('MCD_ESM'), contractAddresses),
+        abi: require('../contracts/abis/ESM-old.json')
+      },
       [ESM]: {
         address: map(prop('MCD_ESM'), contractAddresses),
         abi: require('../contracts/abis/ESM.json')
